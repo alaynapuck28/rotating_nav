@@ -1,0 +1,139 @@
+@import url("https://fonts.googleapis.com/css2?family=Lato&display=swap");
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #333;
+  color: #222;
+  font-family: "Lato", sans-serif;
+  overflow-x: hidden;
+  margin: 0;
+}
+.container {
+  background-color: #fafafa;
+  transform-origin: top left;
+  transition: transform 0.5s linear;
+  width: 100vw;
+  min-height: 100vh;
+  padding: 50px;
+}
+
+/* class added when click to open menu */
+/* will move whole screen -20deg */
+.container.show-nav {
+  transform: rotate(-20deg);
+}
+.container.container.show-nav .circle {
+  transform: rotate(-70deg);
+}
+.container.container.show-nav + nav li {
+  transform: translateX(0);
+  transition-delay: 0.3s;
+}
+
+.content img {
+  max-width: 100%;
+  max-height: 100%;
+}
+
+.circle-container {
+  /* it will always stay at top */
+  position: fixed;
+  top: -100px;
+  left: -100px;
+}
+.circle {
+  background-color: #ff7979;
+  height: 200px;
+  width: 200px;
+  /* circle is relative inside buttons will be absolute */
+  position: relative;
+  border-radius: 50%;
+  border: solid 1px grey;
+  transition: transform 0.4s linear;
+}
+.circle button {
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  font-size: 25px;
+  height: 100px;
+  z-index: 1000;
+  border: 0;
+  background: transparent;
+  color: #fff;
+}
+.circle button:focus {
+  outline: none;
+}
+.circle button#open {
+  left: 60%;
+}
+.circle button#close {
+  top: 60%;
+  transform: rotate(90deg);
+  transform-origin: top left;
+  translate: 0.5s ease;
+}
+.circle show-nav {
+  transform: rotate(-20deg);
+  translate: 0.5s ease;
+}
+.content {
+  /* center content  on left/right and some margin top*/
+  margin: 50px auto;
+  /* not too wide even on big screens */
+  max-width: 1000px;
+}
+.content h1 {
+  margin: 0;
+}
+.content p {
+  color: #333;
+  line-height: 1.5;
+}
+.content small {
+  color: #555;
+  font-style: italic;
+}
+
+/* want nav always positioned in bottom left corner */
+/* bottom but not underneath current page so bring up a bit and all the way left */
+nav {
+  position: fixed;
+  bottom: 40px;
+  left: 0px;
+  z-index: 1000;
+}
+nav ul {
+  list-style: none;
+  padding-left: 30px;
+}
+nav ul li {
+  margin: 30px 0px;
+  text-transform: uppercase;
+  color: #fff;
+  transform: translateX(-100%);
+  transition: transform 0.4s ease-in;
+}
+nav ul li i {
+  font-size: 20px;
+  margin-right: 10 px;
+}
+
+/* stair case affect */
+nav ul li + li {
+  margin-left: 15px;
+  transform: translateX(-150%);
+}
+nav ul li + li + li {
+  margin-left: 30px;
+  transform: translateX(-200%);
+}
+
+nav ul li i {
+  margin-right: 10px;
+}
